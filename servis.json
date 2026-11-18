@@ -1,0 +1,4 @@
+{"brand":"Servis","country":"Pakistan","founded":1941,"return_policy":"7 days exchange with receipt","delivery":"2-3 days, COD available","products":[
+{"name":"Cheetah Sports","category":"Sports","price_pkr":4999,"sizes":[6,7,8,9,10],"colors":["Black","Blue"],"in_stock":true},
+{"name":"Calza Formal","category":"Formal","price_pkr":6999,"sizes":[7,8,9,10],"colors":["Black"],"in_stock":true},
+{"name":"Don Carlos Loafer","category":"Casual","price_pkr":7999,"sizes":[8,9,10],"colors":["Brown","Tan"],"in_stock":false}]}

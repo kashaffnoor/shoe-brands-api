@@ -1,0 +1,4 @@
+{"brand":"Adidas","country":"Germany","founded":1949,"return_policy":"30 days with receipt","delivery":"4-6 working days, free above Rs 8,000","products":[
+{"name":"Ultraboost Light","category":"Running","price_pkr":42999,"sizes":[8,9,10,11],"colors":["Black","White"],"in_stock":true},
+{"name":"Samba OG","category":"Lifestyle","price_pkr":27999,"sizes":[7,8,9,10],"colors":["White/Black"],"in_stock":true},
+{"name":"Stan Smith","category":"Casual","price_pkr":24999,"sizes":[7,8,9],"colors":["White/Green"],"in_stock":true}]}

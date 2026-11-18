@@ -1,0 +1,4 @@
+{"brand":"Puma","country":"Germany","founded":1948,"return_policy":"14 days exchange only","delivery":"3-5 working days","products":[
+{"name":"Velocity Nitro 3","category":"Running","price_pkr":26999,"sizes":[8,9,10],"colors":["Red","Black"],"in_stock":true},
+{"name":"Suede Classic","category":"Casual","price_pkr":17999,"sizes":[7,8,9,10,11],"colors":["Navy","Black"],"in_stock":true},
+{"name":"Future 7 Play","category":"Football","price_pkr":15999,"sizes":[8,9],"colors":["Orange"],"in_stock":false}]}

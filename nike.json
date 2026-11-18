@@ -1,0 +1,4 @@
+{"brand":"Nike","country":"USA","founded":1964,"return_policy":"30 days, unworn with tags","delivery":"3-5 working days, free above Rs 10,000","products":[
+{"name":"Air Max 270","category":"Lifestyle","price_pkr":38999,"sizes":[7,8,9,10,11],"colors":["Black","White"],"in_stock":true},
+{"name":"Pegasus 41","category":"Running","price_pkr":34999,"sizes":[8,9,10],"colors":["Blue","Grey"],"in_stock":true},
+{"name":"Air Force 1","category":"Casual","price_pkr":29999,"sizes":[7,8,9,10],"colors":["White"],"in_stock":false}]}

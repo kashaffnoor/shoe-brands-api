@@ -1,0 +1,230 @@
+{
+  "name": "ShoeBot - 5 Brand AI Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "e180650b-29c1-401f-928d-c7fe119557a5",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "2b85a147-0996-40f1-a463-a1dcb6e919c3"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are \"ShoeBot\", a customer support AI agent for five shoe brands: Nike, Adidas, Puma, Bata and Servis.\n\nRules:\n1. Always call the relevant brand tool (Nike_API, Adidas_API, Puma_API, Bata_API, Servis_API) before answering. Never guess prices or stock.\n2. For comparisons between brands, call every brand tool involved.\n3. Prices are in PKR. Mention size availability and stock status.\n4. If a product is out of stock, say so and suggest a similar in-stock product.\n5. If the user asks about a brand outside these five, politely say you only support these five brands.\n6. Keep answers short, friendly and clear."
+        }
+      },
+      "id": "2c10ae71-6648-48a8-a456-5078200813f6",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        320,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "model": "llama-3.3-70b-versatile",
+        "options": {}
+      },
+      "id": "21c4ae10-4778-4599-b61d-516cdb14f673",
+      "name": "Groq Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        100,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 5
+      },
+      "id": "6d8d8e63-4023-418f-8a40-957c5a72f3d2",
+      "name": "Simple Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        260,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "toolDescription": "Use this tool to get Nike shoe products, prices in PKR, sizes, colors, stock availability, return policy and delivery info.",
+        "url": "https://raw.githubusercontent.com/kashaffnoor/shoe-brands-api/main/nike.json",
+        "options": {}
+      },
+      "id": "249c23b1-cb46-4932-98c3-eadbe74ec2e4",
+      "name": "Nike_API",
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        420,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "toolDescription": "Use this tool to get Adidas shoe products, prices in PKR, sizes, colors, stock availability, return policy and delivery info.",
+        "url": "https://raw.githubusercontent.com/kashaffnoor/shoe-brands-api/main/adidas.json",
+        "options": {}
+      },
+      "id": "04d7854c-8c5e-4f1c-966d-e6ec688012a5",
+      "name": "Adidas_API",
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        580,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "toolDescription": "Use this tool to get Puma shoe products, prices in PKR, sizes, colors, stock availability, return policy and delivery info.",
+        "url": "https://raw.githubusercontent.com/kashaffnoor/shoe-brands-api/main/puma.json",
+        "options": {}
+      },
+      "id": "3bf223c5-3eff-4542-b567-f1e0e819fa59",
+      "name": "Puma_API",
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        740,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "toolDescription": "Use this tool to get Bata shoe products, prices in PKR, sizes, colors, stock availability, return policy and delivery info.",
+        "url": "https://raw.githubusercontent.com/kashaffnoor/shoe-brands-api/main/bata.json",
+        "options": {}
+      },
+      "id": "f7e8d442-2076-4469-a9c8-584277a948b7",
+      "name": "Bata_API",
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        900,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "toolDescription": "Use this tool to get Servis shoe products, prices in PKR, sizes, colors, stock availability, return policy and delivery info.",
+        "url": "https://raw.githubusercontent.com/kashaffnoor/shoe-brands-api/main/servis.json",
+        "options": {}
+      },
+      "id": "c0fc9ef2-6063-4a6d-9a4f-c6db57c8b918",
+      "name": "Servis_API",
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        1060,
+        260
+      ]
+    }
+  ],
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Nike_API": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Adidas_API": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Puma_API": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Bata_API": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Servis_API": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
